@@ -1,4 +1,23 @@
+/*function game(){
+    let Pc = 0;
+    let Player = 0
+    for (let i = 0; i < 5; i++){
+        let player = prompt(`playing round: ${i + 1}`)
+        let pc = computerPlay();
+        let res = playRound(player, pc);
+        console.log(res);
 
+        if (res === "you lost :("){
+            Pc++;
+        }
+        else if (res === "you won :)"){
+            Player++;
+        }
+    }
+    console.log(`your score: ${Player}   Pc score ${Pc}`);
+}*/
+
+let round = 0;
 
 function computerPlay(){
    let moves = ["rock", "paper", "scissors"];
@@ -35,23 +54,36 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    let Pc = 0;
-    let Player = 0
-    for (let i = 0; i < 5; i++){
-        let player = prompt(`playing round: ${i + 1}`)
-        let pc = computerPlay();
-        let res = playRound(player, pc);
-        console.log(res);
+function playing(player){
+    let ans = playRound(player, computerPlay());
 
-        if (res === "you lost :("){
-            Pc++;
-        }
-        else if (res === "you won :)"){
-            Player++;
-        }
+    let content = document.createElement('div');
+    /*content.classList.add('Results');*/
+
+    if (ans === "no winner"){
+        content.textContent = `round no: ${round++} there is no winner`;
     }
-    console.log(`your score: ${Player}   Pc score ${Pc}`);
+    else if (ans === "you won :)"){
+        content.textContent = `round no: ${round++} you won!!!!`;
+    }
+    else{
+        content.textContent = `round no: ${round++} you lost omg wow`;
+    }
+    let container = document.querySelector('.res');
+    container.appendChild(content);
 }
 
-game();
+let rock = document.querySelector('#rock');
+rock.addEventListener('click', function (){
+    playing('rock');
+});
+
+let paper = document.querySelector('#paper');
+paper.addEventListener('click', function (){
+   playing('paper');
+});
+
+let scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', function (){
+   playing('scissors');
+});
