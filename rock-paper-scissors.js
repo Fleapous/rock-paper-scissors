@@ -55,3 +55,5 @@ function game(){
 }
 
 game();
+console.log('lets play another one');
+game();
