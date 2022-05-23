@@ -55,3 +55,4 @@ function game(){
 }
 
 game();
+console.log('hello world');
