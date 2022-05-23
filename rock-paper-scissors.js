@@ -57,3 +57,5 @@ function game(){
 game();
 console.log('lets play another one');
 game();
+console.log('and another!');
+game();
